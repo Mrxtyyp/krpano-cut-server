@@ -33,6 +33,7 @@ npm run dev
 
 ![效果1](./imgs/demo1.png)
 ![效果2](./imgs/demo2.png)
+![效果3](./imgs/demo3.png)
 
 点击预览可查看切出来的多分辨率漫游作品
 
