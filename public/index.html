@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>切图服务</title>
+    <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
+    <script src="layui/layui.js" type="text/javascript"></script>
+    <style type="text/css">
+        body {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+        <legend>krpano 切图服务</legend>
+    </fieldset>
+    <div class="layui-upload">
+        <!-- <input type="file" onchange="fileSelect(this)" class="layui-btn"> -->
+        <button type="button" class="layui-btn" id="upload1">
+            <i class="layui-icon">&#xe67c;</i>上传图片
+        </button>
+        <button type="button" class="layui-btn" id="clearBtn">清除</button>
+        <div class="layui-upload-list" style="max-width: 1500px;">
+            <table class="layui-table">
+                <colgroup>
+                    <col width="200">
+                    <col width="150">
+                    <col width="150">
+                    <col width="150">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>文件名</th>
+                        <th>文件类型</th>
+                        <th>耗时</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="getUploadFileInfo">
+                </tbody>
+            </table>
+
+            <!-- <div class="layui-progress" lay-showpercent="true">
+                <div class="layui-progress-bar" lay-percent="0%" id="progressbar"></div>
+            </div> -->
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+
+    function fileMsgInsert(file, time = 0) {
+        //显示加载相关的文件信息
+        var msg = document.getElementById("getUploadFileInfo");
+        var html = "";
+        html += '<td>' + file.filename + '</td>';
+        html += '<td>' + file.type + '</td>';
+        html += '<td>' + time + ' s </td>';
+        html += '<td><button type="button" class="layui-btn" onclick="previewTour()">预览</button></td>';
+        msg.innerHTML = html;
+    }
+
+    function previewTour() {
+        window.open('/tour', '_blank')
+    }
+
+    document.getElementById('clearBtn').onclick = () => {
+        document.getElementById("getUploadFileInfo").innerHTML = ''
+    }
+</script>
+<!--layui元素进度条-->
+<script>
+    layui.use('element', function () {
+        var $ = layui.jquery,
+            element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+    });
+
+    layui.use('layer')
+
+    layui.use('upload', function () {
+        var upload = layui.upload;
+        var startTime, endTime
+
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#upload1' //绑定元素
+            , url: '/cut' //上传接口
+            , before: function () {
+                layui.layer.load()
+                startTime = new Date();
+            }
+            , done: function (res) {
+                //上传完毕回调
+                console.info(res);
+                layui.layer.closeAll();
+                endTime = new Date()
+                fileMsgInsert(res.data, (endTime - startTime) / 1000)
+                layer.msg('上传成功', { icon: 6 });
+                uploadInst.reload()
+            }
+            , error: function () {
+                //请求异常回调
+            }
+        });
+    });
+</script>
+
+</html>

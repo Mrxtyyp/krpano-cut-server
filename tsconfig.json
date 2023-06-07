@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS", //指定生成哪个模块系统代码
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2015", //目标代码类型
+    "noImplicitAny": false, //在表达式和声明上有隐含的'any'类型时报错。
+    "moduleResolution": "node",
+    "sourceMap": true, //用于debug
+    "outDir": "dist", //仅用来控制输出的目录结构
+    "baseUrl": "./",
+    "types": ["node", "jest"],
+    "paths": {
+      "@/*": ["app/*"]
+    }
+  },
+  "include": ["app/**/*", "services"]
+}
