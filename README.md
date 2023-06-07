@@ -1,6 +1,6 @@
 # krpano-cut-server
 
-仿 krpano 多分辨率切图服务，自己实现切图更方便掌控各个环节的问题
+仿 krpano 多分辨率切图服务，自己实现切图更方便掌控各个环节的问题，[项目解读参考](https://juejin.cn/post/7241778027876679741)
 
 使用需要依赖`node-canvas`
 
