@@ -59,16 +59,16 @@
                        design_text_shadow="1"
                        />
     
-        <scene name="scene_9627b5b729a0d2" title="9627b5b729a0d2" onstart="" thumburl="panos/9627b5b729a0d2/thumb.jpg" lat="30.50993450" lng="103.61708247" heading="34.0">
+        <scene name="scene_8000" title="8000" onstart="" thumburl="panos/tiles/8000/thumb.jpg" lat="30.50993450" lng="103.61708247" heading="34.0">
             
             <control bouncinglimits="calc:image.cube ? true : false" />
     
             <view hlookat="34.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
     
-            <preview url="panos/9627b5b729a0d2/preview.jpg" />
+            <preview url="panos/tiles/8000/preview.jpg" />
     
             <image prealign="0|34.0|0">
-                <sphere url="panos/9627b5b729a0d2/l%l/%0v/l%l_%0v_%0h.jpg" multires="512,2048x1024,4096x2048,8192x4096" />
+                <sphere url="panos/tiles/8000/l%l/%0v/l%l_%0v_%0h.jpg" multires="512,2048x1024,4096x2048,8192x4096" />
             </image>
     
         </scene>
